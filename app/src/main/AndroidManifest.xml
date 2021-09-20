@@ -14,21 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ekart"
         tools:replace="android:theme">
-        <activity android:name="com.pulps.gogreen.HomeActivity"
-
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name="com.pulps.gogreen.SettinsActivity" />
-        <activity android:name="com.pulps.gogreen.SearchProductsActivity" />
-        <activity android:name="com.pulps.gogreen.RegisterActivity" />
-        <activity android:name="com.pulps.gogreen.ProductDetailsActivity" />
-        <activity android:name="com.pulps.gogreen.LoginActivity" />
-        <activity android:name="com.pulps.gogreen.ConfirmFinalOrderActivity" />
-        <activity android:name="com.pulps.gogreen.CartActivity" />
-        <activity android:name="com.pulps.gogreen.AdminUserProductsActivity" />
-        <activity android:name="com.pulps.gogreen.AdminNewOrdersActivity" />
-        <activity android:name="com.pulps.gogreen.AdminCategoryActivity" />
-        <activity android:name="com.pulps.gogreen.AdminAddNewProductActivity" />
-        <activity android:name="com.pulps.gogreen.MainActivity">
+        <activity
+            android:name=".AddItemActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HomeActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".SettinsActivity" />
+        <activity android:name=".SearchProductsActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".ProductDetailsActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ConfirmFinalOrderActivity" />
+        <activity android:name=".CartActivity" />
+        <activity android:name=".AdminUserProductsActivity" />
+        <activity android:name=".AdminNewOrdersActivity" />
+        <activity android:name=".AdminCategoryActivity" />
+        <activity android:name=".AdminAddNewProductActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
