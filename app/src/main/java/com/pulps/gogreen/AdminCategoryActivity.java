@@ -13,7 +13,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
     private ImageView tShirts, sportsTShirts, femaleDresses, sweathers;
     private ImageView glasses, hatsCaps, walletsBagsPurses, shoes;
     private ImageView headPhonesHandFree, Laptops, watches, mobilePhones;
-    private Button LogoutBtn, CheckOrdersBtn;
+    private Button LogoutBtn, CheckOrdersBtn,newRequestsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,16 @@ public class AdminCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(AdminCategoryActivity.this,AdminNewOrdersActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        newRequestsBtn = (Button) findViewById(R.id.new_requests_btn);
+
+        newRequestsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(AdminCategoryActivity.this,AdminNewRequestsActivity.class);
                 startActivity(intent);
             }
         });

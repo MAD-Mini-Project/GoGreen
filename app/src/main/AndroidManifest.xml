@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Ekart"
         tools:replace="android:theme">
         <activity
+            android:name=".AdminNewRequestsActivity"
+            android:exported="true" />
+        <activity
             android:name=".AddItemActivity"
             android:exported="true" />
         <activity
