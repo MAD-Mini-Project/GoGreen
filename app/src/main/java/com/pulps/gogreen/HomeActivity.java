@@ -73,6 +73,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        /********************************** Navigate to Cart Using Floating Action Button in Home Page ***************************************/
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +83,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
+
+        /*************************************************************************************************************************************/
 
     }
     @Override
@@ -101,12 +105,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         holder.txtProductPrice.setText("Price = " + model.getPrice() + "Rs.");
                         Picasso.get().load(model.getImage()).into(holder.imageView);
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            /****************Send User to Product Details Activity with Product ID*******************/
                             @Override
                             public void onClick(View view) {
                                 Intent intent =new Intent(HomeActivity.this,ProductDetailsActivity.class);
                                 intent.putExtra("pid",model.getPid());
                                 startActivity(intent);
                             }
+                            /*****************************************************************************************/
                         });
                     }
 

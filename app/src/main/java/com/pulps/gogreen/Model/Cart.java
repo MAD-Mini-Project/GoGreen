@@ -1,6 +1,12 @@
 package com.pulps.gogreen.Model;
 
-
+/*
+ *
+ ==========================================================================================
+                                       CART MODEL CLASS
+ ==========================================================================================
+ *
+ */
 
 public class Cart {
     private String pid,pname,price,quantity,discount;
