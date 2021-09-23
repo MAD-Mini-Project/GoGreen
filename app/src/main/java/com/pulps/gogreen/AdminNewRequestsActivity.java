@@ -34,8 +34,8 @@ public class AdminNewRequestsActivity extends AppCompatActivity {
         requestList.setHasFixedSize(true);
         requestList.setLayoutManager(new LinearLayoutManager(this));
 
-        list = new ArrayList<>();
-        myAdapter = new RequestAdapter(list, this);
+        list = new ArrayList<Item>();
+        myAdapter = new RequestAdapter(this,list);
         requestList.setAdapter(myAdapter);
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -43,6 +43,7 @@ public class AdminNewRequestsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    //for each record, the values will taken into the item object, then set it to the list
                     Item item = dataSnapshot.getValue(Item.class);
                     list.add(item);
                 }

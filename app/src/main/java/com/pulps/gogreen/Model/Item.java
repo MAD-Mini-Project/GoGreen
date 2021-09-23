@@ -2,17 +2,18 @@ package com.pulps.gogreen.Model;
 
 public class Item {
 
-    private String item;
-    private double price;
-    private String bank;
-    private int account;
-    private String address;
-    private String email;
-    private int mobile;
+    public String item;
+    public double price;
+    public String bank;
+    public int account;
+    public String address;
+    public String email;
+    public int mobile;
+    public String status;
+    public int weight;
+    public double total;
 
-    public Item(){
-
-    }
+    public Item(){ }
 
     public String getItem() {
         return item;
@@ -68,6 +69,26 @@ public class Item {
 
     public void setMobile(int mobile) {
         this.mobile = mobile;
+    }
+
+    public void setStatus(String status) {this.status = status; }
+
+    public String getStatus() {return status; }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 }
 
