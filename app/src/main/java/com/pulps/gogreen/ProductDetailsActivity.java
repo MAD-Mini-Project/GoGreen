@@ -38,7 +38,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
-        productID = getIntent().getStringExtra("pid");
+        productID = getIntent().getStringExtra("pid"); // Get Product ID sent from Home Activity
         addToCartButton =(Button) findViewById(R.id.pd_add_to_cart_button);
         numberButton = (ElegantNumberButton) findViewById(R.id.number_btn);
         productImage = (ImageView) findViewById(R.id.product_image_details);
@@ -67,6 +67,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         CheckOrderState();
     }
 
+    // Add to Database
     private void addingToCartList() {
         String saveCurrentTime,saveCurrentDate;
         Calendar calForDate = Calendar.getInstance();
