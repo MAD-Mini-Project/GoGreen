@@ -91,7 +91,7 @@
         android:background="@drawable/buttons"
         android:padding="15dp"
         android:textAllCaps="false"
-        android:textSize="18sp"
+        android:textSize="20dp"
         android:text="Login"
         android:textColor="@android:color/white"
         />

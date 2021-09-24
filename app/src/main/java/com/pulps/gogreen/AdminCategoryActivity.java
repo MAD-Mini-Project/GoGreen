@@ -10,15 +10,25 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AdminCategoryActivity extends AppCompatActivity {
-    private ImageView tShirts, sportsTShirts, femaleDresses, sweathers;
+    private ImageView tShirts, sportsTShirts, femaleDresses, books;
     private ImageView glasses, hatsCaps, walletsBagsPurses, shoes;
     private ImageView headPhonesHandFree, Laptops, watches, mobilePhones;
-    private Button LogoutBtn, CheckOrdersBtn,newRequestsBtn;
+    private Button LogoutBtn, CheckOrdersBtn,newRequestsBtn, maintainProductsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_category);
+
+        maintainProductsBtn = (Button) findViewById(R.id.maintain_btn);
+        maintainProductsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminCategoryActivity.this, HomeActivity.class);
+                        intent.putExtra("Admin", "Admin");
+                                startActivity(intent);
+            }
+        });
 
         LogoutBtn = (Button) findViewById(R.id.admin_logout_btn);
         LogoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +66,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
         tShirts = (ImageView) findViewById(R.id.t_shirts);
         sportsTShirts = (ImageView) findViewById(R.id.sports_t_shirts);
         femaleDresses = (ImageView) findViewById(R.id.female_dresses);
-        sweathers = (ImageView) findViewById(R.id.sweathers);
+        books = (ImageView) findViewById(R.id.books);
 
         glasses = (ImageView) findViewById(R.id.glasses);
         hatsCaps = (ImageView) findViewById(R.id.hats_caps);
@@ -100,7 +110,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
         });
 
 
-        sweathers.setOnClickListener(new View.OnClickListener() {
+        books.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {

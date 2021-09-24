@@ -41,13 +41,23 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     TextView textView;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    private String type = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null){
+            type = getIntent().getExtras().get("Admin").toString();
+        }
+
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+
+        Paper.init(this);
 
         drawerLayout=findViewById(R.id.drawer_layout);
         navigationView=findViewById(R.id.nav_view);
@@ -108,9 +118,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                             /****************Send User to Product Details Activity with Product ID*******************/
                             @Override
                             public void onClick(View view) {
-                                Intent intent =new Intent(HomeActivity.this,ProductDetailsActivity.class);
-                                intent.putExtra("pid",model.getPid());
-                                startActivity(intent);
+
+                                if (type.equals("Admin")) {
+                                    Intent intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
+                                    intent.putExtra("pid", model.getPid());
+                                    startActivity(intent);
+                                } else {
+                                    Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
+                                    intent.putExtra("pid", model.getPid());
+                                    startActivity(intent);
+                                }
                             }
                             /*****************************************************************************************/
                         });
