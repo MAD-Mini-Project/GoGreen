@@ -16,6 +16,10 @@
         tools:replace="android:theme">
         <activity
             android:name=".AdminMaintainProductsActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".AdminPerchasedListReportActivity"
+
             android:exported="true" />
         <activity
             android:name=".AdminNewRequestsActivity"

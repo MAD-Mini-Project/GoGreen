@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="340dp"
+    android:layout_height="320dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="16dp"
     app:cardCornerRadius="16dp"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="10dp"
-        >
+        android:layout_marginLeft="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,7 +22,7 @@
             android:id="@+id/linear1">
 
             <TextView
-                android:id="@+id/RecycleItem"
+                android:id="@+id/PerchasedItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -32,14 +32,14 @@
                 />
 
             <TextView
-                android:id="@+id/RecyItem"
+                android:id="@+id/perItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="20dp"
                 android:textStyle="bold"
                 android:textSize="17dp"
-                android:text=".." />
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
@@ -50,7 +50,7 @@
             android:layout_below="@+id/linear1">
 
             <TextView
-                android:id="@+id/RecyclePrice"
+                android:id="@+id/perchasedPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -59,14 +59,14 @@
                 android:text="price" />
 
             <TextView
-                android:id="@+id/RecyPrice"
+                android:id="@+id/perPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="20dp"
                 android:textStyle="bold"
                 android:textSize="17dp"
-                android:text=".." />
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
@@ -77,7 +77,7 @@
             android:layout_below="@+id/linear2">
 
             <TextView
-                android:id="@+id/RecycleWeight"
+                android:id="@+id/perchasedWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -86,14 +86,14 @@
                 android:text="weight" />
 
             <TextView
-                android:id="@+id/RecyWeight"
+                android:id="@+id/perWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="20dp"
                 android:textStyle="bold"
                 android:textSize="17dp"
-                android:text=".." />
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
@@ -104,7 +104,7 @@
             android:layout_below="@+id/linear3">
 
             <TextView
-                android:id="@+id/RecycleTotal"
+                android:id="@+id/perchasedTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -113,14 +113,14 @@
                 android:text="total price" />
 
             <TextView
-                android:id="@+id/RecyTotal"
+                android:id="@+id/perTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="20dp"
                 android:textStyle="bold"
                 android:textSize="17dp"
-                android:text=".." />
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
@@ -131,7 +131,7 @@
             android:layout_below="@+id/linear4">
 
             <TextView
-                android:id="@+id/RecycleBank"
+                android:id="@+id/perchasedBank"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -140,14 +140,14 @@
                 android:text="bank" />
 
             <TextView
-                android:id="@+id/RecyBank"
+                android:id="@+id/perBank"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="20dp"
                 android:textStyle="bold"
                 android:textSize="17dp"
-                android:text=".." />
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
@@ -158,7 +158,7 @@
             android:layout_below="@+id/linear5">
 
             <TextView
-                android:id="@+id/RecycleAccount"
+                android:id="@+id/perchasedAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -167,14 +167,14 @@
                 android:text="account" />
 
             <TextView
-                android:id="@+id/RecyAccount"
+                android:id="@+id/perAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="20dp"
                 android:textStyle="bold"
                 android:textSize="17dp"
-                android:text=".." />
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
@@ -185,7 +185,7 @@
             android:layout_below="@+id/linear6">
 
             <TextView
-                android:id="@+id/RecycleAddress"
+                android:id="@+id/perchasedAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -194,14 +194,14 @@
                 android:text="address" />
 
             <TextView
-                android:id="@+id/RecyAddress"
+                android:id="@+id/perAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="20dp"
                 android:textStyle="bold"
                 android:textSize="17dp"
-                android:text=".." />
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
@@ -212,7 +212,7 @@
             android:layout_below="@+id/linear7">
 
             <TextView
-                android:id="@+id/RecycleEmail"
+                android:id="@+id/perchasedEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -221,14 +221,14 @@
                 android:text="email" />
 
             <TextView
-                android:id="@+id/RecyEmail"
+                android:id="@+id/perEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="20dp"
                 android:textStyle="bold"
                 android:textSize="17dp"
-                android:text=".." />
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
@@ -239,7 +239,7 @@
             android:layout_below="@+id/linear8">
 
             <TextView
-                android:id="@+id/RecycleMobile"
+                android:id="@+id/perchasedMobile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -248,14 +248,14 @@
                 android:text="mobile" />
 
             <TextView
-                android:id="@+id/RecyMobile"
+                android:id="@+id/perMobile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="20dp"
                 android:textStyle="bold"
                 android:textSize="17dp"
-                android:text=".." />
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
@@ -263,52 +263,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_below="@+id/linear9">
-
-            <TextView
-                android:id="@+id/RecycleStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:text="status" />
-
-            <TextView
-                android:id="@+id/RecyStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="20dp"
-                android:textStyle="bold"
-                android:textSize="17dp"
-                android:text=".." />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linear11"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_below="@+id/linear10"
-            android:layout_marginTop="10dp"
-            >
+            android:layout_below="@+id/linear9"
+            android:layout_marginTop="10dp">
 
             <Button
-                android:id="@+id/buy_btn"
+                android:id="@+id/perchased_delete_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Buy"
-                android:layout_marginRight="20dp"
-                />
-
-            <Button
-                android:id="@+id/reject_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Delete"
+                android:text="remove"
                 android:layout_marginRight="10dp"/>
         </LinearLayout>
     </LinearLayout>
