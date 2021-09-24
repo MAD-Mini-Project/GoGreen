@@ -27,6 +27,7 @@
         android:layout_marginRight="45dp"
         android:textColorHint="@color/colorPrimaryDark"
         android:background="@drawable/input_design"
+        android:textColor="@color/colorPrimaryDark"
         android:hint="Product Name..."
         android:inputType="textMultiLine"
         android:padding="20dp" />
@@ -42,6 +43,7 @@
         android:textColorHint="@color/colorPrimaryDark"
         android:layout_marginRight="45dp"
         android:background="@drawable/input_design"
+        android:textColor="@color/colorPrimaryDark"
         android:hint="Product Description..."
         android:inputType="textMultiLine"
         android:padding="20dp" />
@@ -57,6 +59,7 @@
         android:layout_marginTop="6dp"
         android:layout_marginRight="45dp"
         android:background="@drawable/input_design"
+        android:textColor="@color/colorPrimaryDark"
         android:hint="Product Price..."
         android:inputType="textMultiLine"
         android:padding="20dp" />
