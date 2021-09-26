@@ -30,51 +30,55 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_final_order);
-
-        totalAmount = getIntent().getStringExtra("Total Price");
-        Toast.makeText(this, "Total Price = Rs. "+totalAmount,Toast.LENGTH_SHORT).show();
+        totalAmount = getIntent().getStringExtra("Total Price"); // Get total price from CartActivity
+        Toast.makeText(this, "Total Price = Rs. "+totalAmount,Toast.LENGTH_SHORT).show(); // Display total price
         confirmOrderBtn = (Button) findViewById(R.id.confirm_final_order_btn);
         nameEditText =(EditText) findViewById(R.id.shippment_name);
         phoneEditText =(EditText) findViewById(R.id.shippment_phone_number);
         addressEditText =(EditText) findViewById(R.id.shippment_address);
         cityEditText =(EditText) findViewById(R.id.shippment_city);
+        // When CONFIRM button is clicked...
         confirmOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Check();
-            }
+            } // Call method to validate shipment details
         });
     }
-
+    // Method to validate shipment details
     private void Check() {
-        if(TextUtils.isEmpty(nameEditText.getText().toString())){
+        if(TextUtils.isEmpty(nameEditText.getText().toString())) {
             Toast.makeText(this,"Please Provide Your Full Name",Toast.LENGTH_SHORT).show();
         }
-        else if(TextUtils.isEmpty(phoneEditText.getText().toString())){
+        else if(TextUtils.isEmpty(phoneEditText.getText().toString())) {
             Toast.makeText(this,"Please Provide Your Phone Number",Toast.LENGTH_SHORT).show();
         }
-        else if(TextUtils.isEmpty(addressEditText.getText().toString())){
+        else if(TextUtils.isEmpty(addressEditText.getText().toString())) {
             Toast.makeText(this,"Please Provide Your Valid Address.",Toast.LENGTH_SHORT).show();
         }
-        else if(TextUtils.isEmpty(cityEditText.getText().toString())){
+        else if(TextUtils.isEmpty(cityEditText.getText().toString())) {
             Toast.makeText(this,"Please Provide Your City Name",Toast.LENGTH_SHORT).show();
         }
         else {
-
-            ConfirmOrder();
+            ConfirmOrder(); // When shipment details are valid, call method to add order details to the database
         }
     }
-
+    // Method to add order details to the database
     private void ConfirmOrder() {
+        // Automatically set current date and time -------------------------------
         final String saveCurrentTime,saveCurrentDate;
         Calendar calForDate = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd. yyy");
         saveCurrentDate = currentDate.format(calForDate.getTime());
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentDate.format(calForDate.getTime());
+        // -----------------------------------------------------------------------
+        // Get database reference for order placed by the user of the current phone number
         final DatabaseReference ordersRef= FirebaseDatabase.getInstance().getReference()
                 .child("Orders")
                 .child(Prevalent.currentOnlineUser.getPhone());
+        // -------------------------------------------------------------------------------
+        // Create HashMap and add order details to it-----------------
         HashMap<String, Object> ordersMap = new HashMap<>();
         ordersMap.put("totalAmount",totalAmount);
         ordersMap.put("name",nameEditText.getText().toString());
@@ -84,6 +88,8 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
         ordersMap.put("date",saveCurrentDate);
         ordersMap.put("time",saveCurrentTime);
         ordersMap.put("state", "Not Shipped");
+        // -----------------------------------------------------------
+        // Add order details to database using the HashMap
         ordersRef.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -97,8 +103,8 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()){
-                                        Toast.makeText(ConfirmFinalOrderActivity.this,"Your final Order has been placed successfully.",Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(ConfirmFinalOrderActivity.this,HomeActivity.class);
+                                        Toast.makeText(ConfirmFinalOrderActivity.this,"Your final Order has been placed successfully.",Toast.LENGTH_SHORT).show(); // Display message
+                                        Intent intent = new Intent(ConfirmFinalOrderActivity.this,HomeActivity.class); // Redirect to HomeActivity
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                         finish();
@@ -108,7 +114,5 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 }
