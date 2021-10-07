@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.pulps.gogreen.Interface.ItemClickListner;
 import com.pulps.gogreen.R;
 
+//  CartViewHolder to describe an cart item and metadata about its place within the RecyclerView
 public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public TextView txtProductName,txtProductPrice,txtProductQuantity;
     private ItemClickListner itemClickListner;

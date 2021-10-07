@@ -199,7 +199,7 @@
             android:layout_below="@+id/new_requests_btn"
             android:layout_marginBottom="5dp"
             android:background="@drawable/input_design"
-            android:text="Perchased Items"
+            android:text="Purchased Items"
             android:textColor="@android:color/white"
             android:textSize="20dp"
             android:textAllCaps="false"

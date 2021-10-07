@@ -48,7 +48,9 @@ public class CartActivity extends AppCompatActivity{
         NextProcessBtn = (Button)findViewById(R.id.next_btn);
         txtTotalAmount = (TextView)findViewById(R.id.total_price);
         txtMsg1 = (TextView)findViewById(R.id.msg1);
+        // When NEXT button is clicked:
         NextProcessBtn.setOnClickListener(new View.OnClickListener() {
+            // Send total price to ConfirmFinalOrderActivity
             @Override
             public void onClick(View view) {
                 txtTotalAmount.setText("Total Price = Rs."+String.valueOf(overTotalPrice));
@@ -58,13 +60,11 @@ public class CartActivity extends AppCompatActivity{
                 finish();
             }
         });
-
     }
-
     @Override
     protected void onStart() {
         super.onStart();
-        CheckOrderState();
+        CheckOrderState(); // Method to check shipping state of orders placed by current user
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
         FirebaseRecyclerOptions<Cart> options =
                 new FirebaseRecyclerOptions.Builder<Cart>()
@@ -79,7 +79,7 @@ public class CartActivity extends AppCompatActivity{
                 holder.txtProductName.setText(model.getPname());
                 int oneTyprProductTPrice = ((Integer.valueOf(model.getPrice())))* Integer.valueOf(model.getQuantity());
                 overTotalPrice = overTotalPrice + oneTyprProductTPrice;
-
+                // Hold item in cart to initiate Edit/ Delete pop-up
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -93,22 +93,32 @@ public class CartActivity extends AppCompatActivity{
                         builder.setItems(options, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+                                // If Edit is selected, redirect to ProductDetailsActivity with product ID of selected product
+                                // and then use the same method that is used to add the product to the cart in the database to
+                                // edit the product quantity
                                 if (i==0){
                                     Intent intent = new Intent(CartActivity.this,ProductDetailsActivity.class);
                                     intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
                                 }
+                                // If Remove is selected:
                                 if (i==1){
+                                    // Get reference to the selected item from the database
                                     cartListRef.child("User view")
                                             .child(Prevalent.currentOnlineUser.getPhone())
                                             .child("Products")
                                             .child(model.getPid())
+                                            // Remove that particular item
                                             .removeValue()
+                                            // Check if the process is successful...
                                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
+                                                    // If yes...
                                                     if (task.isSuccessful()){
+                                                        // Display message
                                                         Toast.makeText(CartActivity.this,"Item removed Successfully.",Toast.LENGTH_SHORT).show();
+                                                        // Redirect to home activity
                                                         Intent intent = new Intent(CartActivity.this,HomeActivity.class);
                                                         startActivity(intent);
                                                     }
@@ -121,7 +131,6 @@ public class CartActivity extends AppCompatActivity{
                     }
                 });
             }
-
             @NonNull
             @Override
             public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -133,11 +142,14 @@ public class CartActivity extends AppCompatActivity{
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
+    // Method to check shipping state of orders placed by current user
     private void CheckOrderState()
     {
+        // Create database reference for orders placed by current user
         DatabaseReference ordersRef;
         ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(Prevalent.currentOnlineUser.getPhone());
         ordersRef.addValueEventListener(new ValueEventListener() {
+            // If there is no order, allow user to continue...
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
@@ -151,20 +163,19 @@ public class CartActivity extends AppCompatActivity{
                         NextProcessBtn.setVisibility(View.GONE);
                         Toast.makeText(CartActivity.this,"You can purchase more products, Once you received your first order",Toast.LENGTH_SHORT).show();
                     }
+                    // If there is an order previously placed...
                     else if (shippingState.equals("Not Shipped")){
                         txtTotalAmount.setText("Shipping State = Not Shipped");
                         recyclerView.setVisibility(View.GONE);
                         txtMsg1.setVisibility(View.VISIBLE);
-
                         NextProcessBtn.setVisibility(View.GONE);
+                        // Display message
                         Toast.makeText(CartActivity.this,"You can purchase more products, Once you received your first order",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }
