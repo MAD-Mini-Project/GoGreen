@@ -30,23 +30,15 @@ public class AdminNewRequestsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_new_requests);
-
-        //rejectBtn = (Button)findViewById(R.id.reject_btn);
-        //buyBtn = (Button)findViewById(R.id.buy_btn);
         requestList=(RecyclerView) findViewById(R.id.requests_list);
         requestList.setHasFixedSize(true);
         requestList.setLayoutManager(new LinearLayoutManager(this));
-
 
         //fetch data from the firebase
         FirebaseRecyclerOptions<Item> options =
                 new FirebaseRecyclerOptions.Builder<Item>()
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("Item"),Item.class)
                         .build();
-        //list = new ArrayList<Item>();
-        //myAdapter = new RequestAdapter(this,list);
-        //requestList.setAdapter(myAdapter);
-
         //send fetch data to the adapter class
         myAdapter = new RequestAdapter(options);
         requestList.setAdapter(myAdapter);

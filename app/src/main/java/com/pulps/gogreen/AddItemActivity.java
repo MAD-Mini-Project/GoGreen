@@ -1,5 +1,4 @@
 package com.pulps.gogreen;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -95,7 +94,6 @@ public class AddItemActivity extends AppCompatActivity {
             loading_bar.setMessage("Your request is being made");
             loading_bar.setCanceledOnTouchOutside(false);
             loading_bar.show();
-
             validate(item,price,bank,account,address,email,mobile,weight);
         }
     }
@@ -106,15 +104,12 @@ public class AddItemActivity extends AppCompatActivity {
         ref= FirebaseDatabase.getInstance().getReference().child("Item");
         double total=0;
 
-
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 if(snapshot.exists()){
                     id=(snapshot.getChildrenCount());
                 }
-
                 Item myItem = new Item();
                 myItem.setItem(item.getText().toString());
                 myItem.setAccount(Integer.parseInt(account.getText().toString()));
@@ -125,7 +120,6 @@ public class AddItemActivity extends AppCompatActivity {
                 myItem.setMobile(Integer.parseInt(mobile.getText().toString()));
                 myItem.setWeight(Integer.parseInt(weight.getText().toString()));
                 myItem.setStatus("pending");
-
                 //calculation part of total
                 myItem.setTotal(myItem.getWeight()*myItem.getPrice());
 
@@ -141,7 +135,6 @@ public class AddItemActivity extends AppCompatActivity {
                     }
                 });
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

@@ -26,10 +26,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pulps.gogreen.Model.Item;
 import com.pulps.gogreen.R;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +33,7 @@ public class RequestAdapter extends FirebaseRecyclerAdapter<Item,RequestAdapter.
 
     long id=0;
 
+    //constructor
     public RequestAdapter(@NonNull FirebaseRecyclerOptions<Item> options) {
         super(options);
     }
@@ -59,20 +56,8 @@ public class RequestAdapter extends FirebaseRecyclerAdapter<Item,RequestAdapter.
         myAdapter.buyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 //TextView newItem,newPrice,newWeight,newTotal,newAddress,newBank,newAccount,newEmail,newMobile,newStatus;
                 Map<String,Object> map = new HashMap<>();
-
-                /*newItem = view.findViewById(R.id.RecyItem);
-                newPrice = view.findViewById(R.id.RecyItem);
-                newWeight = view.findViewById(R.id.RecyItem);
-                newTotal = view.findViewById(R.id.RecyItem);
-                newAddress = view.findViewById(R.id.RecyItem);
-                newAccount = view.findViewById(R.id.RecyItem);
-                newEmail = view.findViewById(R.id.RecyItem);
-                newMobile = view.findViewById(R.id.RecyItem);
-                newStatus = view.findViewById(R.id.RecyItem);
-                newBank = view.findViewById(R.id.RecyItem);*/
 
                 map.put("item",item.getItem());
                 map.put("price",item.getPrice());
@@ -90,17 +75,16 @@ public class RequestAdapter extends FirebaseRecyclerAdapter<Item,RequestAdapter.
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
+
                                 Toast.makeText(myAdapter.item.getContext(), "perchased the item", Toast.LENGTH_SHORT).show();
 
                                 //add perchased details into perchasedItems table
-
                                 DatabaseReference ref;
                                 ref=FirebaseDatabase.getInstance().getReference().child("PerchasedList");
 
                                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                                         if(snapshot.exists()){
                                             id=(snapshot.getChildrenCount());
                                         }
@@ -115,13 +99,11 @@ public class RequestAdapter extends FirebaseRecyclerAdapter<Item,RequestAdapter.
                                         });
 
                                     }
-
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
 
                                     }
                                 });
-
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -130,12 +112,10 @@ public class RequestAdapter extends FirebaseRecyclerAdapter<Item,RequestAdapter.
                                 Toast.makeText(myAdapter.item.getContext(), "error when perchasing", Toast.LENGTH_SHORT).show();
                             }
                         });
-
             }
         });
 
         //delete operation
-
         myAdapter.rejectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -143,7 +123,7 @@ public class RequestAdapter extends FirebaseRecyclerAdapter<Item,RequestAdapter.
                 builder.setTitle("Are you sure?");
                 builder.setMessage("Deleted data can not be undone!");
 
-                builder.setPositiveButton("Reject", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         FirebaseDatabase.getInstance().getReference().child("Item")
